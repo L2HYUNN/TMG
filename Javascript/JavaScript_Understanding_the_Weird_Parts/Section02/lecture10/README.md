@@ -1,0 +1,1 @@
+# 10. The Global Environment and The Global Object
