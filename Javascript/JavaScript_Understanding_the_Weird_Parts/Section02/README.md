@@ -1,1 +1,0 @@
-# Section02: Execution Contexts and Lexical Environments
