@@ -1,5 +1,6 @@
 import { amountFor } from "./amountFor";
 import { playFor } from "./playfor";
+import { volumeCreditsFor } from "./volumeCreditsFor";
 
 export function statement(invoice, plays) {
   let totalAmount = 0;
@@ -12,13 +13,7 @@ export function statement(invoice, plays) {
   }).format;
 
   for (let perf of invoice.performances) {
-    // 포인트를 적립한다.
-    volumeCredits += Math.max(perf.audience - 30, 0);
-
-    // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if ("comedy" === playFor(perf).type) {
-      volumeCredits += Math.floor(perf.audience / 5);
-    }
+    volumeCredits += volumeCreditsFor(perf);
 
     // 청구 내역을 출력한다.
     result += `${playFor(perf).name}: ${format(amountFor(perf))} ${
