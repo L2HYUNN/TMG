@@ -72,12 +72,19 @@ function throwExceptionError(pobi, crong) {
     throw new Error("pobi의 페이지 순서가 올바르지 않습니다.");
 }
 
+const Result = Object.freeze({
+  EXCEPTION: -1,
+  DRAW: 0,
+  POBI_WIN: 1,
+  CRONG_WIN: 2,
+});
+
 function problem1(pobi, crong) {
   try {
     throwExceptionError(pobi, crong);
   } catch (error) {
     console.error(error);
-    return -1;
+    return Result.EXCEPTION;
   }
 
   const pobiNumberResult = selectMaxNumber([
@@ -90,11 +97,11 @@ function problem1(pobi, crong) {
     ...makeMultipliedPageDigitList(crong),
   ]);
 
-  if (pobiNumberResult > crongNumberResult) return 1;
-  if (crongNumberResult > pobiNumberResult) return 2;
-  if (pobiNumberResult === crongNumberResult) return 0;
+  if (pobiNumberResult > crongNumberResult) return Result.POBI_WIN;
+  if (crongNumberResult > pobiNumberResult) return Result.CRONG_WIN;
+  if (pobiNumberResult === crongNumberResult) return Result.DRAW;
 
-  return -1;
+  return Result.EXCEPTION;
 }
 
 console.log(problem1([97, 98], [197, 198]));
