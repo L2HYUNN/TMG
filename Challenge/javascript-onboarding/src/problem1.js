@@ -54,7 +54,32 @@ function makeMultipliedPageDigitList(pageNumbers) {
   return pageNumbers.map((pageNumber) => multiplyPageDigit(pageNumber));
 }
 
+/**
+ * pobi 혹은 crong의 길이가 2가 아닐때 에러를 발생시킵니다.
+ * pobi 혹은 crong의 페이지가 순서대로 나열되어 있지 않을때 에러를 발생시킵니다.
+ *
+ * @param {number[]} pobi
+ * @param {number[]} crong
+ *
+ * @throws {ExceptionError}
+ */
+function throwExceptionError(pobi, crong) {
+  if (pobi.length !== 2) throw new Error("pobi의 길이가 2가 아닙니다.");
+  if (crong.length !== 2) throw new Error("crong의 길이가 2가 아닙니다.");
+  if (pobi[0] + 1 !== pobi[1])
+    throw new Error("pobi의 페이지 순서가 올바르지 않습니다.");
+  if (crong[0] + 1 !== crong[1])
+    throw new Error("pobi의 페이지 순서가 올바르지 않습니다.");
+}
+
 function problem1(pobi, crong) {
+  try {
+    throwExceptionError(pobi, crong);
+  } catch (error) {
+    console.error(error);
+    return -1;
+  }
+
   const pobiNumberResult = selectMaxNumber([
     ...makeAddedPageDigitList(pobi),
     ...makeMultipliedPageDigitList(pobi),
