@@ -24,8 +24,18 @@ function multiplyPageDigit(pageNumber) {
     .reduce((acc, cur) => acc * +cur);
 }
 
+/**
+ * numbers를 인자로 받아 가장 큰 값을 출력한다.
+ *
+ * @param {number[]} numbers
+ * @returns {number}
+ */
+function selectMaxNumber(numbers) {
+  return Math.max(...numbers);
+}
+
 function problem1(pobi, crong) {
-  var answer = multiplyPageDigit(pobi[0]);
+  var answer = selectMaxNumber([5, 10, 15, 3, 99]);
   return answer;
 }
 
