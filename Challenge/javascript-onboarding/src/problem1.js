@@ -1,5 +1,5 @@
 /**
- * pageNumber를 인자로 받아 각 자릿수의 합을 출력한다.
+ * pageNumber를 인자로 받아 각 자릿수의 합을 반환한다.
  *
  * @param {number} pageNumber
  * @returns {number}
@@ -12,7 +12,7 @@ function addPageDigit(pageNumber) {
 }
 
 /**
- * pageNumber를 인자로 받아 각 자릿수의 곱을 출력한다.
+ * pageNumber를 인자로 받아 각 자릿수의 곱을 반환한다.
  *
  * @param {number} pageNumber
  * @returns {number}
@@ -25,7 +25,7 @@ function multiplyPageDigit(pageNumber) {
 }
 
 /**
- * numbers를 인자로 받아 가장 큰 값을 출력한다.
+ * numbers를 인자로 받아 가장 큰 값을 반환한다.
  *
  * @param {number[]} numbers
  * @returns {number}
