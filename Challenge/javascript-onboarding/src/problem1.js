@@ -11,8 +11,21 @@ function addPageDigit(pageNumber) {
     .reduce((acc, cur) => acc + +cur, 0);
 }
 
+/**
+ * pageNumber를 인자로 받아 각 자릿수의 곱을 출력한다.
+ *
+ * @param {number} pageNumber
+ * @returns {number}
+ */
+function multiplyPageDigit(pageNumber) {
+  return pageNumber
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc * +cur);
+}
+
 function problem1(pobi, crong) {
-  var answer = addPageDigit(pobi[0]);
+  var answer = multiplyPageDigit(pobi[0]);
   return answer;
 }
 
