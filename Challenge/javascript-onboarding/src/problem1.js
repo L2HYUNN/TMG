@@ -30,7 +30,7 @@ function multiplyPageDigit(pageNumber) {
  * @param {number[]} numbers
  * @returns {number}
  */
-function selectMaxNumber(numbers) {
+function getMaxNumber(numbers) {
   return Math.max(...numbers);
 }
 
@@ -87,12 +87,12 @@ function problem1(pobi, crong) {
     return Result.EXCEPTION;
   }
 
-  const pobiNumberResult = selectMaxNumber([
+  const pobiNumberResult = getMaxNumber([
     ...makeAddedPageDigitList(pobi),
     ...makeMultipliedPageDigitList(pobi),
   ]);
 
-  const crongNumberResult = selectMaxNumber([
+  const crongNumberResult = getMaxNumber([
     ...makeAddedPageDigitList(crong),
     ...makeMultipliedPageDigitList(crong),
   ]);
