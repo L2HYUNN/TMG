@@ -40,7 +40,7 @@ function getMaxNumber(numbers) {
  * @param {number[]} pageNumbers
  * @returns {number[]}
  */
-function makeAddedPageDigitList(pageNumbers) {
+function getAddedPageDigitList(pageNumbers) {
   return pageNumbers.map((pageNumber) => addPageDigit(pageNumber));
 }
 
@@ -88,12 +88,12 @@ function problem1(pobi, crong) {
   }
 
   const pobiNumberResult = getMaxNumber([
-    ...makeAddedPageDigitList(pobi),
+    ...getAddedPageDigitList(pobi),
     ...makeMultipliedPageDigitList(pobi),
   ]);
 
   const crongNumberResult = getMaxNumber([
-    ...makeAddedPageDigitList(crong),
+    ...getAddedPageDigitList(crong),
     ...makeMultipliedPageDigitList(crong),
   ]);
 
