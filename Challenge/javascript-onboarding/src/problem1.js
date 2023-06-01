@@ -67,6 +67,11 @@ function getScoreResult(pageNumbers) {
   ]);
 }
 
+const ErrorMessage = Object.freeze({
+  ERROR_INVALID_PAGE_LENGTH: "페이지의 길이가 올바르지 않습니다.",
+  ERROR_INVALID_PAGE_ORDER: "페이지의 순서가 올바르지 않습니다.",
+});
+
 /**
  * pobi 혹은 crong의 길이가 2가 아닐때 에러를 발생시킵니다.
  * pobi 혹은 crong의 페이지가 순서대로 나열되어 있지 않을때 에러를 발생시킵니다.
@@ -77,12 +82,10 @@ function getScoreResult(pageNumbers) {
  * @throws {ExceptionError}
  */
 function throwExceptionError(pobi, crong) {
-  if (pobi.length !== 2) throw new Error("pobi의 길이가 2가 아닙니다.");
-  if (crong.length !== 2) throw new Error("crong의 길이가 2가 아닙니다.");
-  if (pobi[0] + 1 !== pobi[1])
-    throw new Error("pobi의 페이지 순서가 올바르지 않습니다.");
-  if (crong[0] + 1 !== crong[1])
-    throw new Error("pobi의 페이지 순서가 올바르지 않습니다.");
+  if (pobi.length !== 2 || crong.length !== 2)
+    throw new Error(ErrorMessage.ERROR_INVALID_PAGE_LENGTH);
+  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1])
+    throw new Error(ErrorMessage.ERROR_INVALID_PAGE_ORDER);
 }
 
 const Result = Object.freeze({
