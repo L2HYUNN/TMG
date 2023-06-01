@@ -55,6 +55,19 @@ function getMultipliedPageDigitList(pageNumbers) {
 }
 
 /**
+ * pageNumbers를 인자로 받아 게임의 규칙에 따라 가장 큰 수를 반환한다.
+ *
+ * @param {number[]} pageNumbers
+ * @returns {number}
+ */
+function getScoreResult(pageNumbers) {
+  return getMaxNumber([
+    ...getAddedPageDigitList(pageNumbers),
+    ...getMultipliedPageDigitList(pageNumbers),
+  ]);
+}
+
+/**
  * pobi 혹은 crong의 길이가 2가 아닐때 에러를 발생시킵니다.
  * pobi 혹은 crong의 페이지가 순서대로 나열되어 있지 않을때 에러를 발생시킵니다.
  *
@@ -87,15 +100,9 @@ function problem1(pobi, crong) {
     return Result.EXCEPTION;
   }
 
-  const pobiNumberResult = getMaxNumber([
-    ...getAddedPageDigitList(pobi),
-    ...getMultipliedPageDigitList(pobi),
-  ]);
+  const pobiNumberResult = getScoreResult(pobi);
 
-  const crongNumberResult = getMaxNumber([
-    ...getAddedPageDigitList(crong),
-    ...getMultipliedPageDigitList(crong),
-  ]);
+  const crongNumberResult = getScoreResult(crong);
 
   if (pobiNumberResult > crongNumberResult) return Result.POBI_WIN;
   if (crongNumberResult > pobiNumberResult) return Result.CRONG_WIN;
