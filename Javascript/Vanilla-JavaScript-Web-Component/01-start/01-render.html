@@ -1,0 +1,10 @@
+<div id="app"></div>
+<script>
+  const $app = document.querySelector("#app");
+
+  const render = ($target) => {
+    $app.innerHTML = `${$target}`;
+  };
+
+  render("<h1>Hello world!</h1>");
+</script>
