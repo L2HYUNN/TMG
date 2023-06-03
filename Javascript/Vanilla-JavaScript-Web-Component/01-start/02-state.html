@@ -1,0 +1,35 @@
+<div id="app"></div>
+<script>
+  const $app = document.querySelector("#app");
+
+  // Set virtual DOM
+  let virtualDOM = "<body></body>";
+
+  // Apply virtual DOM
+  $app.innerHTML = `${virtualDOM}`;
+
+  const $body = document.querySelector("body");
+
+  let state = {
+    items: ["lorem ipsum 0", "lorem ipsum 1", "lorem ipsum 2", "lorem ipsum 3"],
+  };
+
+  const render = () => {
+    const { items } = state;
+    const content = items.map((item) => `<li>${item}</li>`).join("");
+
+    $body.innerHTML = `<ul>${content}</ul><button id='add'>Add new item</button>`;
+
+    const $button = document.querySelector("#add");
+    $button.addEventListener("click", () => {
+      setState({ items: [...items, `lorem ipsum ${items.length}`] });
+    });
+  };
+
+  const setState = (newState) => {
+    state = { ...state, ...newState };
+    render();
+  };
+
+  render();
+</script>
