@@ -55,14 +55,11 @@ function problem1(pobi, crong) {
   }
 
   const pobiScore = createScore(pobi);
-
   const crongScore = createScore(crong);
 
   if (pobiScore > crongScore) return Result.POBI_WIN;
   if (crongScore > pobiScore) return Result.CRONG_WIN;
-  if (pobiScore === crongScore) return Result.DRAW;
-
-  return Result.EXCEPTION;
+  return Result.DRAW;
 }
 
 console.log(problem1([97, 98], [197, 198]));
