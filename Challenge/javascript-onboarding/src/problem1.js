@@ -32,7 +32,7 @@ const ErrorMessage = Object.freeze({
   ERROR_INVALID_PAGE_ORDER: "페이지의 순서가 올바르지 않습니다.",
 });
 
-function throwExceptionError(pobi, crong) {
+function verifyInvalidInput(pobi, crong) {
   if (pobi.length !== 2 || crong.length !== 2)
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_LENGTH);
   if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1])
@@ -41,7 +41,7 @@ function throwExceptionError(pobi, crong) {
 
 function verifyExceptionError(pobi, crong) {
   try {
-    throwExceptionError(pobi, crong);
+    verifyInvalidInput(pobi, crong);
   } catch (error) {
     console.error(error);
     return Result.EXCEPTION;
