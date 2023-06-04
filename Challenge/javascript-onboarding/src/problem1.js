@@ -12,10 +12,6 @@ function multiplyPageDigit(pageNumber) {
     .reduce((acc, cur) => acc * +cur);
 }
 
-function getMaxNumber(numbers) {
-  return Math.max(...numbers);
-}
-
 function getAddedPageDigitList(pageNumbers) {
   return pageNumbers.map((pageNumber) => addPageDigit(pageNumber));
 }
@@ -25,10 +21,10 @@ function getMultipliedPageDigitList(pageNumbers) {
 }
 
 function getScoreResult(pageNumbers) {
-  return getMaxNumber([
+  return Math.max(
     ...getAddedPageDigitList(pageNumbers),
-    ...getMultipliedPageDigitList(pageNumbers),
-  ]);
+    ...getMultipliedPageDigitList(pageNumbers)
+  );
 }
 
 const ErrorMessage = Object.freeze({
