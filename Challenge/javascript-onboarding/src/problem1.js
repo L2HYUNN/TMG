@@ -39,6 +39,15 @@ function throwExceptionError(pobi, crong) {
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_ORDER);
 }
 
+function verifyExceptionError(pobi, crong) {
+  try {
+    throwExceptionError(pobi, crong);
+  } catch (error) {
+    console.error(error);
+    return Result.EXCEPTION;
+  }
+}
+
 const Result = Object.freeze({
   EXCEPTION: -1,
   DRAW: 0,
@@ -47,12 +56,7 @@ const Result = Object.freeze({
 });
 
 function problem1(pobi, crong) {
-  try {
-    throwExceptionError(pobi, crong);
-  } catch (error) {
-    console.error(error);
-    return Result.EXCEPTION;
-  }
+  verifyExceptionError(pobi, crong);
 
   const pobiScore = createScore(pobi);
   const crongScore = createScore(crong);
