@@ -20,7 +20,7 @@ function createMultipliedPageDigitList(pageNumbers) {
   return pageNumbers.map((pageNumber) => multiplyPageDigit(pageNumber));
 }
 
-function createScoreResult(pageNumbers) {
+function createScore(pageNumbers) {
   return Math.max(
     ...createAddedPageDigitList(pageNumbers),
     ...createMultipliedPageDigitList(pageNumbers)
@@ -54,13 +54,13 @@ function problem1(pobi, crong) {
     return Result.EXCEPTION;
   }
 
-  const pobiNumberResult = createScoreResult(pobi);
+  const pobiScore = createScore(pobi);
 
-  const crongNumberResult = createScoreResult(crong);
+  const crongScore = createScore(crong);
 
-  if (pobiNumberResult > crongNumberResult) return Result.POBI_WIN;
-  if (crongNumberResult > pobiNumberResult) return Result.CRONG_WIN;
-  if (pobiNumberResult === crongNumberResult) return Result.DRAW;
+  if (pobiScore > crongScore) return Result.POBI_WIN;
+  if (crongScore > pobiScore) return Result.CRONG_WIN;
+  if (pobiScore === crongScore) return Result.DRAW;
 
   return Result.EXCEPTION;
 }
