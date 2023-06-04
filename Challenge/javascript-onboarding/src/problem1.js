@@ -43,7 +43,6 @@ function verifyExceptionError(pobi, crong) {
   try {
     verifyInvalidInput(pobi, crong);
   } catch (error) {
-    console.error(error);
     return Result.EXCEPTION;
   }
 }
