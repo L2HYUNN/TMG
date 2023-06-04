@@ -12,18 +12,18 @@ function multiplyPageDigit(pageNumber) {
     .reduce((acc, cur) => acc * +cur);
 }
 
-function getAddedPageDigitList(pageNumbers) {
+function createAddedPageDigitList(pageNumbers) {
   return pageNumbers.map((pageNumber) => addPageDigit(pageNumber));
 }
 
-function getMultipliedPageDigitList(pageNumbers) {
+function createMultipliedPageDigitList(pageNumbers) {
   return pageNumbers.map((pageNumber) => multiplyPageDigit(pageNumber));
 }
 
-function getScoreResult(pageNumbers) {
+function createScoreResult(pageNumbers) {
   return Math.max(
-    ...getAddedPageDigitList(pageNumbers),
-    ...getMultipliedPageDigitList(pageNumbers)
+    ...createAddedPageDigitList(pageNumbers),
+    ...createMultipliedPageDigitList(pageNumbers)
   );
 }
 
@@ -54,9 +54,9 @@ function problem1(pobi, crong) {
     return Result.EXCEPTION;
   }
 
-  const pobiNumberResult = getScoreResult(pobi);
+  const pobiNumberResult = createScoreResult(pobi);
 
-  const crongNumberResult = getScoreResult(crong);
+  const crongNumberResult = createScoreResult(crong);
 
   if (pobiNumberResult > crongNumberResult) return Result.POBI_WIN;
   if (crongNumberResult > pobiNumberResult) return Result.CRONG_WIN;
