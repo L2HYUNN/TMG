@@ -20,10 +20,18 @@ function createMultipliedPageDigits(pageNumbers) {
   return pageNumbers.map((pageNumber) => multiplyPageDigit(pageNumber));
 }
 
+function selectMaxAddedPage(pageNumbers) {
+  return Math.max(...createAddedPageDigits(pageNumbers));
+}
+
+function selectMaxMultipliedPage(pageNumbers) {
+  return Math.max(...createMultipliedPageDigits(pageNumbers));
+}
+
 function createScore(pageNumbers) {
   return Math.max(
-    ...createAddedPageDigits(pageNumbers),
-    ...createMultipliedPageDigits(pageNumbers)
+    selectMaxAddedPage(pageNumbers),
+    selectMaxMultipliedPage(pageNumbers)
   );
 }
 
