@@ -26,7 +26,7 @@ function selectMaxMultipliedPage(pageNumbers) {
   return Math.max(...createMultipliedPageDigits(pageNumbers));
 }
 
-function createScore(pageNumbers) {
+function selectMaxScore(pageNumbers) {
   return Math.max(
     selectMaxAddedPage(pageNumbers),
     selectMaxMultipliedPage(pageNumbers)
@@ -65,8 +65,8 @@ const Result = Object.freeze({
 function problem1(pobi, crong) {
   if (!isValid(pobi, crong)) return Result.EXCEPTION;
 
-  const pobiScore = createScore(pobi);
-  const crongScore = createScore(crong);
+  const pobiScore = selectMaxScore(pobi);
+  const crongScore = selectMaxScore(crong);
 
   if (pobiScore > crongScore) return Result.POBI_WIN;
   if (crongScore > pobiScore) return Result.CRONG_WIN;
