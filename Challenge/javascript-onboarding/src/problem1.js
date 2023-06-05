@@ -1,15 +1,13 @@
+function splitPageNumber(pageNumber) {
+  return pageNumber.toString().split("");
+}
+
 function addPageDigit(pageNumber) {
-  return pageNumber
-    .toString()
-    .split("")
-    .reduce((acc, cur) => acc + +cur, 0);
+  return splitPageNumber(pageNumber).reduce((acc, cur) => acc + +cur, 0);
 }
 
 function multiplyPageDigit(pageNumber) {
-  return pageNumber
-    .toString()
-    .split("")
-    .reduce((acc, cur) => acc * +cur);
+  return splitPageNumber(pageNumber).reduce((acc, cur) => acc * +cur);
 }
 
 function createAddedPageDigits(pageNumbers) {
