@@ -38,16 +38,17 @@ const ErrorMessage = Object.freeze({
   ERROR_INVALID_PAGE_ORDER: "페이지의 순서가 올바르지 않습니다.",
 });
 
-function verifyInput(pobi, crong) {
-  if (pobi.length !== 2 || crong.length !== 2)
+function verifyInput(input) {
+  if (input.length !== 2)
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_LENGTH);
-  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1])
+  if (input[0] + 1 !== input[1])
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_ORDER);
 }
 
 function isValid(pobi, crong) {
   try {
-    verifyInput(pobi, crong);
+    verifyInput(pobi);
+    verifyInput(crong);
     return true;
   } catch (error) {
     return false;
