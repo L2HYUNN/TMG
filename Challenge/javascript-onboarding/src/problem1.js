@@ -45,11 +45,12 @@ function verifyInvalidInput(pobi, crong) {
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_ORDER);
 }
 
-function verifyExceptionError(pobi, crong) {
+function isValid(pobi, crong) {
   try {
     verifyInvalidInput(pobi, crong);
+    return true;
   } catch (error) {
-    return Result.EXCEPTION;
+    return false;
   }
 }
 
@@ -61,7 +62,7 @@ const Result = Object.freeze({
 });
 
 function problem1(pobi, crong) {
-  verifyExceptionError(pobi, crong);
+  if (!isValid(pobi, crong)) return Result.EXCEPTION;
 
   const pobiScore = createScore(pobi);
   const crongScore = createScore(crong);
