@@ -34,13 +34,20 @@ function selectMaxScore(pageNumbers) {
 }
 
 const ErrorMessage = Object.freeze({
-  ERROR_INVALID_PAGE_LENGTH: "페이지의 길이가 올바르지 않습니다.",
+  ERROR_INVALID_PAGE_LENGTH: "페이지 배열의 길이는 2여야만 합니다.",
+  ERROR_INVALID_LEFT_PAGE_NUMBER: "왼쪽 페이지는 홀수여야만 합니다.",
+  ERROR_INVALID_RIGHT_PAGE_NUMBER: "오른쪽 페이지는 짝수여야만 합니다.",
   ERROR_INVALID_PAGE_ORDER: "페이지의 순서가 올바르지 않습니다.",
 });
 
 function verifyInput(input) {
   if (input.length !== 2)
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_LENGTH);
+  if (input[0] % 2 !== 1) throw new Error(ErrorMessage.ERROR_INVALID_LEFT_PAGE);
+  if (input[1] % 2 !== 0)
+    throw new Error(ErrorMessage.ERROR_INVALID_RIGHT_PAGE);
+  if (input[0] > input[1])
+    throw new Error(ErrorMessage.ERROR_INVALID_PAGE_ORDER);
   if (input[0] + 1 !== input[1])
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_ORDER);
 }
