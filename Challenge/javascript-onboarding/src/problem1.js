@@ -12,18 +12,18 @@ function multiplyPageDigit(pageNumber) {
     .reduce((acc, cur) => acc * +cur);
 }
 
-function createAddedPageDigitList(pageNumbers) {
+function createAddedPageDigits(pageNumbers) {
   return pageNumbers.map((pageNumber) => addPageDigit(pageNumber));
 }
 
-function createMultipliedPageDigitList(pageNumbers) {
+function createMultipliedPageDigits(pageNumbers) {
   return pageNumbers.map((pageNumber) => multiplyPageDigit(pageNumber));
 }
 
 function createScore(pageNumbers) {
   return Math.max(
-    ...createAddedPageDigitList(pageNumbers),
-    ...createMultipliedPageDigitList(pageNumbers)
+    ...createAddedPageDigits(pageNumbers),
+    ...createMultipliedPageDigits(pageNumbers)
   );
 }
 
