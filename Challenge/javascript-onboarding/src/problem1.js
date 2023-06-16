@@ -59,6 +59,13 @@ const Result = Object.freeze({
   CRONG_WIN: 2,
 });
 
+function selectResult(pobiScore, crongScore) {
+  if (pobiScore > crongScore) return Result.POBI_WIN;
+  if (crongScore > pobiScore) return Result.CRONG_WIN;
+
+  return Result.DRAW;
+}
+
 function selectWinner(pobi, crong) {
   verifyInput(pobi);
   verifyInput(crong);
@@ -66,10 +73,7 @@ function selectWinner(pobi, crong) {
   const pobiScore = selectMaxScore(pobi);
   const crongScore = selectMaxScore(crong);
 
-  if (pobiScore > crongScore) return Result.POBI_WIN;
-  if (crongScore > pobiScore) return Result.CRONG_WIN;
-
-  return Result.DRAW;
+  return selectResult(pobiScore, crongScore);
 }
 
 function problem1(pobi, crong) {
