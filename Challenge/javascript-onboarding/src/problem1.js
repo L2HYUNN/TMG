@@ -52,16 +52,6 @@ function verifyInput(input) {
     throw new Error(ErrorMessage.ERROR_INVALID_PAGE_ORDER);
 }
 
-function isValid(pobi, crong) {
-  try {
-    verifyInput(pobi);
-    verifyInput(crong);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
-
 const Result = Object.freeze({
   EXCEPTION: -1,
   DRAW: 0,
@@ -70,6 +60,9 @@ const Result = Object.freeze({
 });
 
 function selectWinner(pobi, crong) {
+  verifyInput(pobi);
+  verifyInput(crong);
+
   const pobiScore = selectMaxScore(pobi);
   const crongScore = selectMaxScore(crong);
 
@@ -80,9 +73,11 @@ function selectWinner(pobi, crong) {
 }
 
 function problem1(pobi, crong) {
-  if (!isValid(pobi, crong)) return Result.EXCEPTION;
-
-  return selectWinner(pobi, crong);
+  try {
+    return selectWinner(pobi, crong);
+  } catch (error) {
+    return Result.EXCEPTION;
+  }
 }
 
 console.log(problem1([97, 98], [197, 198]));
