@@ -2,20 +2,24 @@ function splitPageNumber(pageNumber) {
   return pageNumber.toString().split("");
 }
 
-function addPageDigit(pageNumber) {
-  return splitPageNumber(pageNumber).reduce((acc, cur) => acc + +cur, 0);
+function addPageDigit(pageNumbers) {
+  return pageNumbers.reduce((acc, cur) => acc + +cur, 0);
 }
 
-function multiplyPageDigit(pageNumber) {
-  return splitPageNumber(pageNumber).reduce((acc, cur) => acc * +cur);
+function multiplyPageDigit(pageNumbers) {
+  return pageNumbers.reduce((acc, cur) => acc * +cur);
 }
 
 function createAddedPageDigits(pageNumbers) {
-  return pageNumbers.map((pageNumber) => addPageDigit(pageNumber));
+  return pageNumbers.map((pageNumber) =>
+    addPageDigit(splitPageNumber(pageNumber))
+  );
 }
 
 function createMultipliedPageDigits(pageNumbers) {
-  return pageNumbers.map((pageNumber) => multiplyPageDigit(pageNumber));
+  return pageNumbers.map((pageNumber) =>
+    multiplyPageDigit(splitPageNumber(pageNumber))
+  );
 }
 
 function selectMaxAddedPage(pageNumbers) {
