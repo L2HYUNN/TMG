@@ -11,8 +11,12 @@ function deleteAllDuplicateCharacter(string) {
     : result;
 }
 
-function problem2(cryptogram) {
+function decrypt(cryptogram) {
   return deleteAllDuplicateCharacter(cryptogram);
+}
+
+function problem2(cryptogram) {
+  return decrypt(cryptogram);
 }
 
 console.log(problem2("browoanoommnaon"));
