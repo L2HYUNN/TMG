@@ -1,9 +1,12 @@
+function isDuplicate(string, index) {
+  return (
+    string[index - 1] === string[index] || string[index] === string[index + 1]
+  );
+}
+
 function deleteDuplicateCharacter(string) {
   return Array.from(string)
-    .filter(
-      (character, index) =>
-        string[index - 1] !== character && character !== string[index + 1]
-    )
+    .filter((_, index) => !isDuplicate(string, index))
     .join("");
 }
 
