@@ -1,10 +1,14 @@
-function deleteAllDuplicateCharacter(string) {
-  const result = Array.from(string)
+function deleteDuplicateCharacter(string) {
+  return Array.from(string)
     .filter(
       (character, index) =>
         string[index - 1] !== character && character !== string[index + 1]
     )
     .join("");
+}
+
+function deleteAllDuplicateCharacter(string) {
+  const result = deleteDuplicateCharacter(string);
 
   return string.length !== result.length
     ? deleteAllDuplicateCharacter(result)
