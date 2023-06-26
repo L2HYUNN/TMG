@@ -24,7 +24,7 @@ const ErrorMessage = Object.freeze({
 });
 
 function validateCryptogram(cryptogram) {
-  if (cryptogram.toLowerCase() !== cryptogram)
+  if (cryptogram.match(/[a-z]/g).join("") !== cryptogram)
     throw new Error(ErrorMessage.ERROR_INVALIDE_CRYPTOGRAM);
   if (cryptogram.length < 0 || cryptogram.length > 1000)
     throw new Error(ErrorMessage.ERROR_INVALIDE_CRYPTOGRAM_LENGTH);
