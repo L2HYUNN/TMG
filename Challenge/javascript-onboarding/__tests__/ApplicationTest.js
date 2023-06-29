@@ -42,11 +42,28 @@ describe("problem1", () => {
 });
 
 describe("problem2", () => {
-  test("case1", () => {
+  /** 프로그램 검증 */
+  test("중복된 문자열이 있는 경우 중복된 부분이 제거된 문자열을 반환한다.", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
   });
-  test("case2", () => {
+  test("중복된 문자열이 있는 경우 중복된 부분이 제거된 문자열을 반환한다.", () => {
     expect(problem2("zyelleyz")).toEqual("");
+  });
+  test("중복된 문자열이 없는 경우 입력된 문자열을 그대로 반환한다.", () => {
+    expect(problem2("brown")).toEqual("brown");
+  });
+
+  /** 예외 검증 */
+  test("문자열은 알파벳 소문자로만 이루어져 있어야 한다.", () => {
+    expect(problem2("Brown")).toEqual(
+      "입력된 암호문의 형태가 유효하지 않습니다."
+    );
+    // 특수 문자, 숫자 검증
+  });
+  test("문자열의 길이는 1이상 1000이하여야만 한다.", () => {
+    expect(problem2(Array(1001).fill("a").join(""))).toEqual(
+      "입력된 암호문의 길이가 올바르지 않습니다."
+    );
   });
 });
 
