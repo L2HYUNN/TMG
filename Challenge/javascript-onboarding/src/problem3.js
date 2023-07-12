@@ -8,8 +8,27 @@ function splitNumber(number) {
   return number.toString().split("");
 }
 
+function calculateGameNumber(number) {
+  return splitNumber(number).reduce(
+    (result, splitedNumber) =>
+      isGameNumber(Number(splitedNumber)) ? result + 1 : result,
+    0
+  );
+}
+
+function indexArray(number) {
+  return Array.from(Array(number), (_, index) => index);
+}
+
+function game(number) {
+  return indexArray(number).reduce(
+    (result, current) => result + calculateGameNumber(current + 1),
+    0
+  );
+}
+
 function problem3(number) {
-  return isGameNumber(3);
+  return game(number);
 }
 
 console.log(problem3(33));
