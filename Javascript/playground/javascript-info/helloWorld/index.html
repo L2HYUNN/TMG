@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>스크립트 전</p>
+
+    <script>
+      // <script> 태그를 이용하면 자바스크립트 프로그램을 HTML 문서에 삽입할 수 있다.
+      alert("Hello, world!");
+      // <script src="/path/to/script.js">
+      // scr를 통해 경로 상의 외부 스크립트를 이용할 수 있다.
+
+      // <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js">
+      // 위와 같이 URL 전체를 속성으로 사용할 수도 있다.
+
+      /**
+       * 이와 같이 HTML 안에 직접 스크립트를 작성하는 방식은 대개 스크립트가 아주 간단할 때만 사용한다.
+       *
+       * 스크립트를 별도의 파일에 작성하면 브라우저가 스크립트를 다운받아 캐시(cache)에 저장하기 때문에, 성능상의 이점이 있다.
+       *
+       */
+
+      /**
+       * <script> 태그에 src 속성이 있다면 태그 내부의 코드는 무시된다.
+       * 즉 scr 속성과 내부 코드를 동시에 가질 수 없다.
+       */
+    </script>
+
+    <p>스크립트 후</p>
+  </body>
+</html>
