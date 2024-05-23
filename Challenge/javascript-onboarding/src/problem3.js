@@ -33,7 +33,7 @@ function validateNumber(number) {
   if (!Number.isInteger(number)) {
     throw new Error(ErrorMessage.ERROR_NUBER_IS_NOT_INTEGER);
   }
-  if (!(0 < number || number <= 10000)) {
+  if (!(0 < number && number <= 10000)) {
     throw new Error(ErrorMessage.ERROR_NUMBER_NOT_IN_RANGE);
   }
 }
