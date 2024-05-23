@@ -68,11 +68,30 @@ describe("problem2", () => {
 });
 
 describe("problem3", () => {
+  // 프로그램 검증
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
   });
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
+  });
+
+  // 예외 검증
+  test("number는 숫자여야 한다.", () => {
+    expect(problem3("13")).toEqual("입력된 숫자의 타입이 올바르지 않습니다.");
+  });
+  test("number는 정수여야 한다.", () => {
+    expect(problem3(13.99)).toEqual("입력된 숫자가 정수가 아닙니다.");
+  });
+  test("number는 0과 10000 사이에 존재해야 한다.", () => {
+    expect(problem3(-5)).toEqual(
+      "입력된 숫자가 유효 범위 안에 존재하지 않습니다."
+    );
+  });
+  test("number는 0과 10000 사이에 존재해야 한다.", () => {
+    expect(problem3(10001)).toEqual(
+      "입력된 숫자가 유효 범위 안에 존재하지 않습니다."
+    );
   });
 });
 
