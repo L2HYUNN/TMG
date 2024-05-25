@@ -1,7 +1,7 @@
-const CLAP_GAME = Object.freeze({ NUMBERS: [3, 6, 9] });
+const CLAP_GAME = Object.freeze({ DIGITS: [3, 6, 9] });
 
 function isClapGameNumber(number) {
-  return CLAP_GAME.NUMBERS.includes(number);
+  return CLAP_GAME.DIGITS.includes(number);
 }
 
 function splitDigits(number) {
