@@ -8,7 +8,7 @@ function splitDigits(number) {
   return number.toString().split("");
 }
 
-function calculateGameNumber(number) {
+function countClapDigits(number) {
   return splitDigits(number).reduce(
     (result, splitedNumber) =>
       isClapGameNumber(Number(splitedNumber)) ? result + 1 : result,
@@ -42,7 +42,7 @@ function game(number) {
   validateNumber(number);
 
   return generateRange(number).reduce(
-    (result, current) => result + calculateGameNumber(current + 1),
+    (result, current) => result + countClapDigits(current + 1),
     0
   );
 }
