@@ -16,8 +16,8 @@ function calculateGameNumber(number) {
   );
 }
 
-function indexArray(number) {
-  return Array.from(Array(number), (_, index) => index);
+function generateRange(number) {
+  return Array.from({ length: number }, (_, index) => index);
 }
 
 const ErrorMessage = Object.freeze({
@@ -41,7 +41,7 @@ function validateNumber(number) {
 function game(number) {
   validateNumber(number);
 
-  return indexArray(number).reduce(
+  return generateRange(number).reduce(
     (result, current) => result + calculateGameNumber(current + 1),
     0
   );
