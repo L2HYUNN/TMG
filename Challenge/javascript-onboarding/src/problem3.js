@@ -1,6 +1,6 @@
 const CLAP_GAME = Object.freeze({ NUMBERS: [3, 6, 9] });
 
-function isGameNumber(number) {
+function isClapGameNumber(number) {
   return CLAP_GAME.NUMBERS.includes(number);
 }
 
@@ -11,7 +11,7 @@ function splitNumber(number) {
 function calculateGameNumber(number) {
   return splitNumber(number).reduce(
     (result, splitedNumber) =>
-      isGameNumber(Number(splitedNumber)) ? result + 1 : result,
+      isClapGameNumber(Number(splitedNumber)) ? result + 1 : result,
     0
   );
 }
