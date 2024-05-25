@@ -4,8 +4,8 @@ function isClapGameDigit(digit) {
   return CLAP_GAME.DIGITS.includes(digit);
 }
 
-function splitDigits(number) {
-  return number.toString().split("");
+function splitDigits(digit) {
+  return digit.toString().split("");
 }
 
 function countClapDigits(number) {
@@ -18,6 +18,13 @@ function countClapDigits(number) {
 
 function generateRange(number) {
   return Array.from({ length: number }, (_, index) => index);
+}
+
+function countTotalClaps(number) {
+  return generateRange(number).reduce(
+    (result, current) => result + countClapDigits(current + 1),
+    0
+  );
 }
 
 const ErrorMessage = Object.freeze({
@@ -41,10 +48,7 @@ function validateNumber(number) {
 function game(number) {
   validateNumber(number);
 
-  return generateRange(number).reduce(
-    (result, current) => result + countClapDigits(current + 1),
-    0
-  );
+  return countTotalClaps(number);
 }
 
 function problem3(number) {
