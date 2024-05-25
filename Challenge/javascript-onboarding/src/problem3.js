@@ -4,12 +4,12 @@ function isClapGameNumber(number) {
   return CLAP_GAME.NUMBERS.includes(number);
 }
 
-function splitNumber(number) {
+function splitDigits(number) {
   return number.toString().split("");
 }
 
 function calculateGameNumber(number) {
-  return splitNumber(number).reduce(
+  return splitDigits(number).reduce(
     (result, splitedNumber) =>
       isClapGameNumber(Number(splitedNumber)) ? result + 1 : result,
     0
