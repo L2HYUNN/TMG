@@ -1,7 +1,7 @@
 const CLAP_GAME = Object.freeze({ DIGITS: [3, 6, 9] });
 
-function isClapGameNumber(number) {
-  return CLAP_GAME.DIGITS.includes(number);
+function isClapGameDigit(digit) {
+  return CLAP_GAME.DIGITS.includes(digit);
 }
 
 function splitDigits(number) {
@@ -11,7 +11,7 @@ function splitDigits(number) {
 function countClapDigits(number) {
   return splitDigits(number).reduce(
     (result, splitedNumber) =>
-      isClapGameNumber(Number(splitedNumber)) ? result + 1 : result,
+      isClapGameDigit(Number(splitedNumber)) ? result + 1 : result,
     0
   );
 }
