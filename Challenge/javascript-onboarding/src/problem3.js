@@ -45,7 +45,7 @@ function validateNumber(number) {
   }
 }
 
-function game(number) {
+function clapGame(number) {
   validateNumber(number);
 
   return countTotalClaps(number);
@@ -53,7 +53,7 @@ function game(number) {
 
 function problem3(number) {
   try {
-    return game(number);
+    return clapGame(number);
   } catch (error) {
     return error.message;
   }
