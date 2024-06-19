@@ -1,23 +1,30 @@
-const GAME = Object.freeze({ NUMBERS: [3, 6, 9] });
+const CLAP_GAME = Object.freeze({ DIGITS: [3, 6, 9] });
 
-function isGameNumber(number) {
-  return GAME.NUMBERS.includes(number);
+function isClapGameDigit(digit) {
+  return CLAP_GAME.DIGITS.includes(digit);
 }
 
-function splitNumber(number) {
-  return number.toString().split("");
+function splitDigits(digit) {
+  return digit.toString().split("");
 }
 
-function calculateGameNumber(number) {
-  return splitNumber(number).reduce(
+function countClapDigits(number) {
+  return splitDigits(number).reduce(
     (result, splitedNumber) =>
-      isGameNumber(Number(splitedNumber)) ? result + 1 : result,
+      isClapGameDigit(Number(splitedNumber)) ? result + 1 : result,
     0
   );
 }
 
-function indexArray(number) {
-  return Array.from(Array(number), (_, index) => index);
+function generateRange(number) {
+  return Array.from({ length: number }, (_, index) => index);
+}
+
+function countTotalClaps(number) {
+  return generateRange(number).reduce(
+    (result, current) => result + countClapDigits(current + 1),
+    0
+  );
 }
 
 const ErrorMessage = Object.freeze({
@@ -38,18 +45,15 @@ function validateNumber(number) {
   }
 }
 
-function game(number) {
+function clapGame(number) {
   validateNumber(number);
 
-  return indexArray(number).reduce(
-    (result, current) => result + calculateGameNumber(current + 1),
-    0
-  );
+  return countTotalClaps(number);
 }
 
 function problem3(number) {
   try {
-    return game(number);
+    return clapGame(number);
   } catch (error) {
     return error.message;
   }
